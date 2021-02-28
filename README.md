@@ -113,9 +113,9 @@ SSH into the control node and follow the steps below:
 - Run the playbook with the ansible-playbook install-elk.yml command, and navigate to [your_elk_server_ip:5601] in your prefered web browser to check that the installation worked as expected.
 - For Filebeat and Metricbeat, you will need a separate playbook and configuration file shown here:
   - ![filebeat-config.yml](Ansible/filebeat-config.yml)
-  - filebeat-playbook.yml
-  - metricbeat-config.yml
-  - metricbeat-playbook.yml
+  - ![filebeat-playbook.yml](Ansible/filebeat-playbook.yml)
+  - ![metricbeat-config.yml](Ansible/metricbeat-config.yml)
+  - ![metricbeat-playbook.yml](Ansible/metricbeat-playbook.yml)
 
 - _Which file is the playbook? Where do you copy it?_
 
