@@ -36,7 +36,6 @@ FileBeat collects data about the file system.
 Metricbeat collects machine metrics such as uptime.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function   | IP Address | Operating System |
 |----------|------------|------------|------------------|
@@ -117,6 +116,10 @@ SSH into the control node and follow the steps below:
   - ![metricbeat-config.yml](Ansible/metricbeat-config.yml)
   - ![metricbeat-playbook.yml](Ansible/metricbeat-playbook.yml)
 
+The following screenshot shows a successful deployment of the ELK stack to your ELK server IP:
+
+![Kibana_Homescreen](Images/Kibana_Homescreen.png)
+
 - _Which file is the playbook? Where do you copy it?_
 
 filebeat-playbook.yml is the playbook necessary to install filebeat and should be copied to the /etc/filebeat directory on each individual machine you would like to monitor (this is provided in the filebeat-playbook.yml already)
@@ -125,7 +128,7 @@ metricbeat-playbook.yml is the playbook necessary to install metricbeat and shou
 
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 
-Edit the /etc/ansible/hosts file to add web server and elk server ip addresses. In this file, you will create groups that can be updated to reflect which machines you want to install filebeat/metricbeat on speciffically.
+Edit the /etc/ansible/hosts file to add web server and elk server ip addresses. In this file, you will create groups that can be updated to reflect which machines you want to install filebeat/metricbeat on specifically.
  - Ex: [webservers]
        10.0.0.4 ansible_python_interpreter=/usr/bin/python3
 
