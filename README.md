@@ -112,7 +112,7 @@ SSH into the control node and follow the steps below:
 - Update the install-elk.yml file to reflect the hosts you would like to be effected by the playbook (ensure your ansible.cfg file is updated with the correct IP addresses of the hosts you want to effect)
 - Run the playbook with the ansible-playbook install-elk.yml command, and navigate to [your_elk_server_ip:5601] in your prefered web browser to check that the installation worked as expected.
 - For Filebeat and Metricbeat, you will need a separate playbook and configuration file shown here:
-  - !filebeat-config.yml (Ansible/filebeat-config.yml)
+  - ![filebeat-config.yml](Ansible/filebeat-config.yml)
   - filebeat-playbook.yml
   - metricbeat-config.yml
   - metricbeat-playbook.yml
