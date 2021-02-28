@@ -117,7 +117,6 @@ SSH into the control node and follow the steps below:
   - metricbeat-config.yml
   - metricbeat-playbook.yml
 
-_TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
 
 filebeat-playbook.yml is the playbook necessary to install filebeat and should be copied to the /etc/filebeat directory on each individual machine you would like to monitor (this is provided in the filebeat-playbook.yml already)
