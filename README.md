@@ -23,17 +23,17 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly available, in addition to restricting access to the network from unwanted guests.
 
-'Load balancers protect the availability of a given network by providing a website an external IP address that is accessed by the internet. The Load balancer will then distribute incoming traffic evenly accross multiple servers which can help mitigate DoS (Denial of Service) attacks. A load balancer will typically have a health probe function that will regularly check available machines to ensure they are functioning correctly before sending traffic to them. If there is a problem with a given machine, the load balancer will stop sending traffic to the machine and will issue a reported error. This will not completely protect a system, but will add to it's resiliancy.'   
+Load balancers protect the availability of a given network by providing a website an external IP address that is accessed by the internet. The Load balancer will then distribute incoming traffic evenly accross multiple servers which can help mitigate DoS (Denial of Service) attacks. A load balancer will typically have a health probe function that will regularly check available machines to ensure they are functioning correctly before sending traffic to them. If there is a problem with a given machine, the load balancer will stop sending traffic to the machine and will issue a reported error. This will not completely protect a system, but will add to it's resiliancy.   
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the event logs and system metrics.
 
 - _What does Filebeat watch for?_
 
-'FileBeat collects data about the file system.'
+FileBeat collects data about the file system.
 
 - _What does Metricbeat record?_
 
-'Metricbeat collects machine metrics such as uptime.'
+Metricbeat collects machine metrics such as uptime.
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
@@ -52,11 +52,11 @@ The machines on the internal network are not exposed to the public Internet.
 
 Only the Load Balancer can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 
-- 'Whitelisted IP Address: Personal IP'
+- Whitelisted IP Address: Personal IP
 
 Machines within the network can only be accessed by the Jump-Box-Provisioner utilizing docker.
 
-'The Jump-Box-Provisioner Machine is allowed to access the ELK-VM through the docker container. However, my personal computer is allowed to connect to Kibana through the web browser on port 5601.
+The Jump-Box-Provisioner Machine is allowed to access the ELK-VM through the docker container. However, my personal computer is allowed to connect to Kibana through the web browser on port 5601.
 
 A summary of the access policies in place can be found in the table below.
 
