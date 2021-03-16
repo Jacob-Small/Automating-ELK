@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Update the path with the name of your diagram](Images/ELK_Network_Diagram.png)
+![](Images/ELK_Network_Diagram.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the install-elk.yml file may be used to install only certain pieces of it, such as Filebeat.
 
@@ -23,17 +23,19 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly available, in addition to restricting access to the network from unwanted guests.
 
-Load balancers protect the availability of a given network by providing a website an external IP address that is accessed by the internet. The Load balancer will then distribute incoming traffic evenly accross multiple servers which can help mitigate DoS (Denial of Service) attacks. A load balancer will typically have a health probe function that will regularly check available machines to ensure they are functioning correctly before sending traffic to them. If there is a problem with a given machine, the load balancer will stop sending traffic to the machine and will issue a reported error. This will not completely protect a system, but will add to it's resiliancy.   
+Load balancers protect the availability of a given network by providing the webservers an external IP address that is accessed by the internet. As traffic enters the network, the load balancer will distribute the incoming traffic evenly across the multiple servers. This is advantageous in many ways, but serves the primary purpose of mitigating DoS (Denial of Service) attacks due to overwhelming web traffic. 
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the event logs and system metrics.
+A load balancer will also typically have a health probe function that will regularly check available machines to ensure they are functioning correctly before sending traffic to them. If there is a problem with a given machine, the load balancer will stop sending traffic to the machine and will issue a reported error. This will not completely protect a system, but will add to it's resiliancy.   
+
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the event logs and system metrics. In this instance, we have utilized two tools from the Elastic Stack library: Filebeat and Metricbeat.
 
 - _What does Filebeat watch for?_
 
-FileBeat collects logs about the file system.
+FileBeat collects logs about the file system. It is particularly useful for system and application log files, but can be used for text files that you would like to index to Elasticsearch in some way.
 
 - _What does Metricbeat record?_
 
-Metricbeat collects machine metrics such as uptime.
+Metricbeat collects machine metrics such as uptime from servers and systems. It's lightweight platform allows us to send system and service statistics without impacting system or application performance.  
 
 The configuration details of each machine may be found below.
 
@@ -47,32 +49,34 @@ The configuration details of each machine may be found below.
 
 ### Access Policies
 
-The machines on the internal network are not exposed to the public Internet. 
+The machines on the internal network are not exposed to the public internet. 
 
-Only the Load Balancer can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+Only the Jump-Box-Provisioner can accept connections from the internet. Access to this machine is only allowed from the following IP addresses:
 
 - Whitelisted IP Address: Personal IP
 
-Machines within the network can only be accessed by the Jump-Box-Provisioner utilizing docker.
+Machines within the network can only be accessed by the Jump-Box-Provisioner utilizing SSH (Secure Shell).
 
 The Jump-Box-Provisioner Machine is allowed to access the ELK-VM through the docker container. However, my personal computer is allowed to connect to Kibana through the web browser on port 5601.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name          | Publicly Accessible | Allowed IP Addresses |
-|---------------|---------------------|----------------------|
-| Load Balancer | Yes                 | Personal/Open        |
-| Jump Box      | Yes                 | Personal             |
-| Web-1         | No                  | 10.0.0.7             |
-| Web-2         | No                  | 10.0.0.7             |
-| Web-3         | No                  | 10.0.0.7             |
-| ELK-VM        | Yes                 | 10.0.0.{8,7,5,6}/Open|
+| Name          | Publicly Accessible | Allowed IP Addresses          |
+|---------------|---------------------|-------------------------------|
+| Load Balancer | Yes                 | Personal/Open                 |
+| Jump Box      | Yes                 | Personal                      |
+| Web-1         | No                  | 10.0.0.7                      |
+| Web-2         | No                  | 10.0.0.7                      |
+| Web-3         | No                  | 10.0.0.7                      |
+| ELK-VM        | Yes                 | 10.0.0.{8,7,5,6}/local IP:5601|
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because any network administrator can implement these changes/additions across multiple machines within a given network. They can modify the playbook to their specific needs before deployment which allows this method to be scalable, repeatable, and empiracle. When a particular piece of infrastructure is needed, all that is needed in the future is the code that defines that particular item and deployment will be simple. This will also allow for security protocols to be be built from the ground up and allow for simple logging and version control. Ultimately, the main purpose of this infrastructure is to allow for Continuous Integration/Continuous Deployment '(CI/CD)' of our virtual environment through updates to our configuration files rather than one-to-one machine interaction/maintenance.  
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because any network administrator can implement these changes/additions across multiple machines within a given network. They can modify the playbook to their specific needs before deployment which allows this method to be scalable, repeatable, and empiracle. 
 
-- _What is the main advantage of automating configuration with Ansible?_
+When a particular piece of infrastructure is desired, all that is required in the future is the code that defines that particular item and deployment will be simple. This will also allow for security protocols to be be built from the ground up and facilitate simple logging and version control. Ultimately, the main purpose of this infrastructure is to implement Continuous Integration/Continuous Deployment '(CI/CD)' to our virtual environment through updates within our configuration files rather than one-to-one machine interaction/maintenance.  
+
+- _Playbook Overview_
 
 The playbook implements the following tasks:
 - Increases the Virtual Memory of the Machne
@@ -83,7 +87,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/sudo_docker_ps.png)
+![](Images/sudo_docker_ps.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
