@@ -29,7 +29,7 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 
 - _What does Filebeat watch for?_
 
-FileBeat collects data about the file system.
+FileBeat collects logs about the file system.
 
 - _What does Metricbeat record?_
 
