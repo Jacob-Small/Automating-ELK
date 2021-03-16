@@ -133,11 +133,11 @@ __Creating Ansible Groups__
 
 Edit the /etc/ansible/hosts file to add web server and elk server ip addresses. In this file, you will create groups that can be updated to reflect which machines you want to install filebeat/metricbeat on specifically. EX:
 
- [webservers]
- 
- *10.0.0.5 ansible_python_interpreter=/usr/bin/python3
- *10.0.0.6 ansible_python_interpreter=/usr/bin/python3
- *10.0.0.8 ansible_python_interpreter=/usr/bin/python3
+ > [webservers]
+ >
+ > 10.0.0.5 ansible_python_interpreter=/usr/bin/python3
+ > 10.0.0.6 ansible_python_interpreter=/usr/bin/python3
+ > 10.0.0.8 ansible_python_interpreter=/usr/bin/python3
 
 __Deployment Verification__
 
