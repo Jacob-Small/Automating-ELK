@@ -4,9 +4,7 @@ The files in this repository were used to configure the network depicted below.
 
 ![](Images/ELK_Network_Diagram.png)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the install-elk.yml file may be used to install only certain pieces of it, such as Filebeat.
-
-  - ![install-elk.yml](Ansible/install-elk.yml)
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the ![install-elk.yml](Ansible/install-elk.yml) file may be used to install only certain pieces of it, such as Filebeat.
 
 This document contains the following details:
 - Description of the Topology
@@ -29,7 +27,7 @@ A load balancer will also typically have a health probe function that will regul
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the event logs and system metrics. In this instance, we have utilized two tools from the Elastic Stack library: Filebeat and Metricbeat.
 
-- _What does Filebeat watch for?_
+- _What does Filebeat record?_
 
 FileBeat collects logs about the file system. It is particularly useful for system and application log files, but can be used for text files that you would like to index to Elasticsearch in some way.
 
@@ -76,7 +74,7 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 
 When a particular piece of infrastructure is desired, all that is required in the future is the code that defines that particular item and deployment will be simple. This will also allow for security protocols to be be built from the ground up and facilitate simple logging and version control. Ultimately, the main purpose of this infrastructure is to implement Continuous Integration/Continuous Deployment '(CI/CD)' to our virtual environment through updates within our configuration files rather than one-to-one machine interaction/maintenance.  
 
-- _Playbook Overview_
+### Playbook Overview
 
 The playbook implements the following tasks:
 - Increases the Virtual Memory of the Machne
