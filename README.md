@@ -113,6 +113,7 @@ SSH into the control node and follow the steps below:
 - Update the install-elk.yml file to reflect the hosts you would like to be effected by the playbook (ensure your ansible.cfg file is updated with the correct IP addresses of the hosts you want to effect)
 - Run the playbook with the ansible-playbook install-elk.yml command, and navigate to [your_elk_server_ip:5601] in your prefered web browser to check that the installation worked as expected.
 - For Filebeat and Metricbeat, you will need a separate playbook and configuration file shown here:
+
   - ![filebeat-config.yml](Ansible/filebeat-config.yml)
   - ![filebeat-playbook.yml](Ansible/filebeat-playbook.yml)
   - ![metricbeat-config.yml](Ansible/metricbeat-config.yml)
@@ -122,24 +123,25 @@ The following screenshot shows a successful deployment of the ELK stack to your 
 
 ![Kibana_Homescreen](Images/Kibana_Homescreen.png)
 
-- _Which file is the playbook? Where do you copy it?_
+__Installing Beats__
 
-filebeat-playbook.yml is the playbook necessary to install filebeat and should be copied to the /etc/filebeat directory on each individual machine you would like to monitor (this is provided in the filebeat-playbook.yml already)
+![filebeat-playbook.yml](Ansible/filebeat-playbook.yml) is the playbook necessary to install filebeat and should be copied to the /etc/filebeat directory on each individual machine you would like to monitor (this is provided in the filebeat-playbook.yml already). Be sure you have downloaded the ![filebeat-config.yml](Ansible/filebeat-config.yml) before running the playbook. 
 
-metricbeat-playbook.yml is the playbook necessary to install metricbeat and should be copied to the /etc/metricbeat directory on each individual machine you would like to monitor (this is provided in the metricbeat-playbook.yml already)
+![metricbeat-playbook.yml](Ansible/metricbeat-playbook.yml) is the playbook necessary to install metricbeat and should be copied to the /etc/metricbeat directory on each individual machine you would like to monitor (this is provided in the metricbeat-playbook.yml already). Be sure you have downloaded the ![metricbeat-config.yml](Ansible/metricbeat-config.yml) before running the playbook.
 
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+__Creating Ansible Groups__
 
 Edit the /etc/ansible/hosts file to add web server and elk server ip addresses. In this file, you will create groups that can be updated to reflect which machines you want to install filebeat/metricbeat on specifically.
- - Ex: [webservers]
-       10.0.0.4 ansible_python_interpreter=/usr/bin/python3
 
-- _Which URL do you navigate to in order to check that the ELK server is running?_
+ - Ex: [webservers]
+       10.0.0.5 ansible_python_interpreter=/usr/bin/python3
+       10.0.0.6 ansible_python_interpreter=/usr/bin/python3
+       10.0.0.8 ansible_python_interpreter=/usr/bin/python3
+
+__Deployment Verification__
 
 When you have successfully run the playbook, navigate to http//:[your_elk_server_ip:5601]/app/kibana and:
 
 - Navigate to the filebeat/metricbeat installation page
 - Navigate to Step 5: Module status at the bottom of the page
 - Click "Check Data" to see if Data was successfully recieved 
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
