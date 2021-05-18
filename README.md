@@ -25,11 +25,7 @@ A load balancer will also typically have a health probe function that will regul
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the event logs and system metrics. In this instance, we have utilized two tools from the Elastic Stack library: Filebeat and Metricbeat.
 
-- _What does Filebeat record?_
-
 FileBeat collects logs about the file system. It is particularly useful for system and application log files, but can be used for text files that you would like to index to Elasticsearch in some way.
-
-- _What does Metricbeat record?_
 
 Metricbeat collects machine metrics such as uptime from servers and systems. It's lightweight platform allows us to send system and service statistics without impacting system or application performance.  
 
