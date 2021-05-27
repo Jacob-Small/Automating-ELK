@@ -12,6 +12,8 @@ This document contains the following details:
 - ELK Configuration
 - How to Use the Ansible Build
 
+### ![To see a powerpoint presentation of this project, please click here](./Presentaion/Automating-ELK-Presentation)
+
 
 ### Description of the Topology
 
